@@ -1,6 +1,6 @@
 ﻿namespace jbDEV_Eternal.Api.Shared
 {
-    public enum EnumClass
+    public enum EnumCharacterClass
     {
         Knight = 1,
         Mage = 2,

@@ -7,6 +7,6 @@ namespace jbDEV_Eternal.Domain.Contracts.Repositories
 {
     public interface ICharacterRepository : IRepository<Character>
     {
-        Task<List<Character>> SelectByNameAsync(string name, CancellationToken cancellationToken = default);
+        Task<List<Character>> GetByNameAsync(string name, CancellationToken cancellationToken = default);
     }
 }

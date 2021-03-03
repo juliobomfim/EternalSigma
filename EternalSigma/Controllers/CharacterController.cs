@@ -24,7 +24,7 @@ namespace jbDEV_Eternal.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get([FromQuery] string name, CancellationToken cancellationToken) => Ok(await _characterRepository.SelectByNameAsync(name, cancellationToken));
+        public async Task<IActionResult> Get([FromQuery] string name, CancellationToken cancellationToken) => Ok(await _characterRepository.GetByNameAsync(name, cancellationToken));
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] RegisterCharacterModel model, CancellationToken cancellationToken) => await AsyncExecute(_characterService.CreateCharacterAsync(model, cancellationToken), cancellationToken);

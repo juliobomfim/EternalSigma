@@ -7,8 +7,8 @@ namespace jbDEV_Eternal.Domain.Contracts.Repositories
 {
     public interface IRepository<T> where T : Entity
     {
-        Task InsertAsync(T entity, CancellationToken cancellationToken = default);
+        Task AddAsync(T entity, CancellationToken cancellationToken = default);
         void DeleteAsync(T entity);
-        Task<T> RestoreAsync(Guid id, CancellationToken cancellationToken = default);
+        Task<T> GetAsync(Guid id, CancellationToken cancellationToken = default);
     }
 }

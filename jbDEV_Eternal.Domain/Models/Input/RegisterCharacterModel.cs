@@ -11,6 +11,6 @@ namespace jbDEV_Eternal.Domain.Models.Input
         public int Strength { get; set; }
         public int Defense { get; set; }
         public int Intelligence { get; set; }
-        public EnumClass Class { get; set; }
+        public EnumCharacterClass Class { get; set; }
     }
 }
