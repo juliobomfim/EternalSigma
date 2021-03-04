@@ -6,10 +6,13 @@
 
   <ItemGroup>
     <PackageReference Include="IdentityServer4" Version="4.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.3" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\jbDEV_Eternal.Business\jbDEV_Eternal.Business.csproj" />
     <ProjectReference Include="..\jbDEV_Eternal.Domain\jbDEV_Eternal.Domain.csproj" />
+    <ProjectReference Include="..\jbDEV_Eternal.Infra\jbDEV_Eternal.Infra.csproj" />
   </ItemGroup>
 
 </Project>
