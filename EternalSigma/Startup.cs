@@ -3,6 +3,7 @@ using jbDEV_Eternal.Domain.Contracts;
 using jbDEV_Eternal.Domain.Contracts.Repositories;
 using jbDEV_Eternal.Domain.Contracts.Services;
 using jbDEV_Eternal.Infra.Connections;
+using jbDEV_Eternal.Infra.Repositories;
 using jbDEV_Eternal.Infra.Uow;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -32,6 +33,7 @@ namespace EternalSigma
 
             services.AddScoped<IUow, UnityOfWork>();
             services.AddScoped<ICharacterService, CharacterService>();
+            services.AddScoped<ICharacterRepository, CharacterRepository>();
 
             services.AddCors((x) => x.AddPolicy("Dev", op => op.AllowAnyOrigin().AllowAnyMethod()));
         }

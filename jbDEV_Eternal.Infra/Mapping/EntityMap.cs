@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace jbDEV_Eternal.Infra.Mapping
 {
-    public class EntityMap<T> : IEntityTypeConfiguration<T>where T:Entity
+    public class EntityMap<T> : IEntityTypeConfiguration<T> where T:Entity
     {
         public virtual void Configure(EntityTypeBuilder<T> builder)
         {

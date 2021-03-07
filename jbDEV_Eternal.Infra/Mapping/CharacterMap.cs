@@ -1,4 +1,5 @@
 ﻿using jbDEV_Eternal.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace jbDEV_Eternal.Infra.Mapping
@@ -7,6 +8,7 @@ namespace jbDEV_Eternal.Infra.Mapping
     {
         public override void Configure(EntityTypeBuilder<Character> builder)
         {
+            builder.ToTable("Characters");
 
             builder.Property(x => x.Name)
                 .IsRequired()
