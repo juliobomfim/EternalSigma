@@ -17,7 +17,7 @@ namespace jbDEV_Eternal.Infra.Repositories
             _dataContext = dataContext;
         }
 
-        public void DeleteAsync(T entity) => _dataContext.Set<T>().Remove(entity);
+        public void RemoveAsync(T entity) => _dataContext.Set<T>().Remove(entity);
         public async Task AddAsync(T entity, CancellationToken cancellationToken = default) => await _dataContext.AddAsync(entity, cancellationToken);
         public async Task<T> GetAsync(Guid id, CancellationToken cancellationToken = default) => await _dataContext.Set<T>().FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
     }
