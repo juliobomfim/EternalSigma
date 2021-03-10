@@ -1,16 +1,16 @@
-using jbDEV_Eternal.Business.Services;
+using jbDEV_Eternal.Domain.Constants;
 using jbDEV_Eternal.Domain.Contracts;
-using jbDEV_Eternal.Domain.Contracts.Repositories;
-using jbDEV_Eternal.Domain.Contracts.Services;
 using jbDEV_Eternal.Infra.Connections;
-using jbDEV_Eternal.Infra.Repositories;
 using jbDEV_Eternal.Infra.Uow;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace EternalSigma
 {
@@ -32,10 +32,31 @@ namespace EternalSigma
             });
 
             services.AddScoped<IUow, UnityOfWork>();
-            services.AddScoped<ICharacterService, CharacterService>();
-            services.AddScoped<ICharacterRepository, CharacterRepository>();
 
-            services.AddCors((x) => x.AddPolicy("Dev", op => op.AllowAnyOrigin().AllowAnyMethod()));
+            services.AddCors((x) => x
+                .AddPolicy("Dev", op => op
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()));
+
+            services.AddAuthentication(opts => 
+            {
+                opts.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                opts.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(opst => 
+            {
+                opst.RequireHttpsMetadata = false;
+                opst.SaveToken = true;
+
+                opst.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidIssuer = AuthenticationConfig.Issuer,
+                    ValidAudience = AuthenticationConfig.Audience,
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(AuthenticationConfig.CryptKey)),
+                    ValidateIssuer = true,
+                    ValidateAudience = true
+                };
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

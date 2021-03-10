@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace jbDEV_Eternal.Domain.Contracts.Repositories
 {
-    public interface ICharacterRepository : IRepository<Character>
+    public interface ICharacterRepository : IRepository
     {
         Task<List<Character>> GetByNameAsync(string name, CancellationToken cancellationToken = default);
     }

@@ -14,4 +14,8 @@
     <ProjectReference Include="..\jbDEV_Eternal.Domain\jbDEV_Eternal.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Repositories\" />
+  </ItemGroup>
+
 </Project>
